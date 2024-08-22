@@ -1,5 +1,4 @@
 import React, { createContext, useState, ReactNode } from 'react';
-import { AuthError, fetchAuthSession, fetchUserAttributes } from 'aws-amplify/auth'
 import { queryClient } from '../../api/Common';
 
 export interface AuthContextType {
@@ -61,44 +60,5 @@ export const AuthProvider: React.FC<{children: ReactNode}> = ({ children }) => {
 export const fetchAttributesAndTokens = async (authContext: AuthContextType) => {
     const { setUser, setTokens } = authContext;
 
-    if ((authContext.username === undefined ||
-        authContext.org === undefined || 
-        authContext.role === undefined || 
-        authContext.idToken === undefined || 
-        authContext.accessToken === undefined)
-    ) {
-        try {
-            const attributes = await fetchUserAttributes();
-
-            if (attributes["custom:username"] === undefined) {
-                throw new Error("User does not have a username");
-            }
-
-            if (attributes["custom:org"] === undefined) {
-                throw new Error("User does not have an organization");
-            }
-
-            if (attributes["custom:role"] === undefined) {
-                throw new Error("User does not have a role");
-            }
-
-            setUser(attributes["custom:username"], attributes["custom:org"], attributes["custom:role"]);
-
-            const {accessToken, idToken} = (await fetchAuthSession()).tokens ?? {};
-
-            if (accessToken === undefined || idToken === undefined) {
-                throw new Error("Failed to fetch tokens");
-            }
-
-            setTokens(accessToken.toString(), idToken.toString());
-
-        } catch (error: any) {
-            // This is a dirty fix for the log out runtime error.
-            if (error instanceof AuthError ) {
-                console.info('Error fetching attributes and tokens because of auth error ', error);
-            } else {
-                throw error;
-            }
-        }
-    }
+    setUser("yipper", "tpy", "admin");
 }

@@ -3,12 +3,10 @@ import { SwipeableDrawer, IconButton, List, ListItem, ListItemText, Box, Stack }
 import { useNavigate } from 'react-router-dom';
 import MenuIcon from '@mui/icons-material/Menu';
 import { useContext, useState } from 'react';
-import { useAuthenticator } from '@aws-amplify/ui-react';
 import { AuthContext } from './auth/AuthProvider';
 
 
 const LeftNav = () => {
-    const { signOut } = useAuthenticator((context) => [context.user]);
     const authContext = useContext(AuthContext);
 
     const adminMenuItems = [
@@ -46,7 +44,6 @@ const LeftNav = () => {
     };
 
     const handleLogOut = () => {
-        signOut();
         authContext.signOut();
         navigate('/')
         console.log('signed out')
