@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@aws-sdk/signature-v4": "^3.374.0",
+    "@apideck/better-ajv-errors":"0.3.6",
     "@cloudbase/cli": "2.5.0",
     "@emotion/react": "^11.13.0",
     "@emotion/styled": "^11.13.0",
