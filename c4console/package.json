@@ -5,6 +5,8 @@
   "dependencies": {
     "@aws-sdk/signature-v4": "^3.374.0",
     "@cloudbase/cli": "2.5.0",
+    "@emotion/react": "^11.13.0",
+    "@emotion/styled": "^11.13.0",
     "@mui/icons-material": "^5.15.1",
     "@mui/lab": "^5.0.0-alpha.158",
     "@mui/material": "^5.15.1",
@@ -61,5 +63,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
   }
 }
